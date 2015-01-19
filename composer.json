@@ -1,0 +1,19 @@
+{
+ "name": "wallabag/phpMobi",
+ "type": "library",
+ "description": "An experimental Mobipocket file creator in PHP.",
+ "homepage": "https://github.com/wallabag/phpMobi",
+ "authors": [
+        {
+            "name": "Nicolas Lœuillet",
+            "email": "nicolas@loeuillet.org",
+            "homepage": "http://www.cdetc.fr"
+        }
+    ], 
+    "require": {
+        "php": ">=5.3.0"        
+    },
+    "autoload": {
+        "files": ["MOBI.php"]
+    }
+}
