@@ -186,6 +186,15 @@ class MOBI {
 		echo $data;
 		//Finished!
 	}
-	
+
+    /**
+     * Return the mobi file as string so it can be send manually
+     * @return string
+     */
+    public function toString(){
+        $prc = $this->preparePRC();
+
+        return $prc->serialize();
+    }	
 }
 ?>
