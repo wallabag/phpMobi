@@ -1,162 +1,165 @@
 <?php
 
 /**
- * Description of CharacterEntities
+ * Description of CharacterEntities.
  *
  * @author Sander
  */
-class CharacterEntities {
-	public static function convert($str){
-		//Assume the encoding is UTF-8 -> output is UTF-8
-		return $str;
-		//return utf8_encode($str);
-		//Convert to CP1252
-		list($from, $to) = CharacterEntities::generateTables();
-		return str_replace($from, $to, $str);
-	}
+class CharacterEntities
+{
+    public static function convert($str)
+    {
+        //Assume the encoding is UTF-8 -> output is UTF-8
+        return $str;
+        //return utf8_encode($str);
+        //Convert to CP1252
+        list($from, $to) = self::generateTables();
 
-	private static function generateTables(){
-		$from = array();
-		$to = array();
+        return str_replace($from, $to, $str);
+    }
 
-		for($i = 0; $i < 256; $i++){
-			$from[$i] = $to[$i] = chr($i);
-		}
-		
-		$from[0x80] = "€";
-		$from[0x82] = "‚";
-		$from[0x83] = "ƒ";
-		$from[0x84] = "„";
-		$from[0x85] = "…";
-		$from[0x86] = "†";
-		$from[0x87] = "‡";
-		$from[0x88] = "ˆ";
-		$from[0x89] = "‰";
-		$from[0x8A] = "Š";
-		$from[0x8B] = "‹";
-		$from[0x8C] = "Œ";
-		$from[0x8E] = "Ž";
+    private static function generateTables()
+    {
+        $from = array();
+        $to = array();
 
-		$from[0x91] = "‘";
-		$from[0x92] = "’";
-		$from[0x93] = "“";
-		$from[0x94] = "”";
-		$from[0x95] = "•";
-		$from[0x96] = "–";
-		$from[0x97] = "—";
-		$from[0x98] = "˜";
-		$from[0x99] = "™";
-		$from[0x9A] = "š";
-		$from[0x9B] = "›";
-		$from[0x9C] = "œ";
-		$from[0x9E] = "ž";
-		$from[0x9F] = "Ÿ";
+        for ($i = 0; $i < 256; ++$i) {
+            $from[$i] = $to[$i] = chr($i);
+        }
 
-		$from[0xA1] = "¡";
-		$from[0xA2] = "¢";
-		$from[0xA3] = "£";
-		$from[0xA4] = "¤";
-		$from[0xA5] = "¥";
-		$from[0xA6] = "¦";
-		$from[0xA7] = "§";
-		$from[0xA8] = "¨";
-		$from[0xA9] = "©";
-		$from[0xAA] = "ª";
-		$from[0xAB] = "«";
-		$from[0xAC] = "¬";
-		$from[0xAE] = "®";
-		$from[0xAF] = "¯";
+        $from[0x80] = '€';
+        $from[0x82] = '‚';
+        $from[0x83] = 'ƒ';
+        $from[0x84] = '„';
+        $from[0x85] = '…';
+        $from[0x86] = '†';
+        $from[0x87] = '‡';
+        $from[0x88] = 'ˆ';
+        $from[0x89] = '‰';
+        $from[0x8A] = 'Š';
+        $from[0x8B] = '‹';
+        $from[0x8C] = 'Œ';
+        $from[0x8E] = 'Ž';
 
-		$from[0xB0] = "°";
-		$from[0xB1] = "±";
-		$from[0xB2] = "²";
-		$from[0xB3] = "³";
-		$from[0xB4] = "´";
-		$from[0xB5] = "µ";
-		$from[0xB6] = "¶";
-		$from[0xB7] = "·";
-		$from[0xB8] = "¸";
-		$from[0xB9] = "¹";
-		$from[0xBA] = "º";
-		$from[0xBB] = "»";
-		$from[0xBC] = "¼";
-		$from[0xBD] = "½";
-		$from[0xBE] = "¾";
-		$from[0xBF] = "¿";
+        $from[0x91] = '‘';
+        $from[0x92] = '’';
+        $from[0x93] = '“';
+        $from[0x94] = '”';
+        $from[0x95] = '•';
+        $from[0x96] = '–';
+        $from[0x97] = '—';
+        $from[0x98] = '˜';
+        $from[0x99] = '™';
+        $from[0x9A] = 'š';
+        $from[0x9B] = '›';
+        $from[0x9C] = 'œ';
+        $from[0x9E] = 'ž';
+        $from[0x9F] = 'Ÿ';
 
-		$from[0xC0] = "À";
-		$from[0xC1] = "Á";
-		$from[0xC2] = "Â";
-		$from[0xC3] = "Ã";
-		$from[0xC4] = "Ä";
-		$from[0xC5] = "Å";
-		$from[0xC6] = "Æ";
-		$from[0xC7] = "Ç";
-		$from[0xC8] = "È";
-		$from[0xC9] = "É";
-		$from[0xCA] = "Ê";
-		$from[0xCB] = "Ë";
-		$from[0xCC] = "Ì";
-		$from[0xCD] = "Í";
-		$from[0xCE] = "Î";
-		$from[0xCF] = "Ï";
+        $from[0xA1] = '¡';
+        $from[0xA2] = '¢';
+        $from[0xA3] = '£';
+        $from[0xA4] = '¤';
+        $from[0xA5] = '¥';
+        $from[0xA6] = '¦';
+        $from[0xA7] = '§';
+        $from[0xA8] = '¨';
+        $from[0xA9] = '©';
+        $from[0xAA] = 'ª';
+        $from[0xAB] = '«';
+        $from[0xAC] = '¬';
+        $from[0xAE] = '®';
+        $from[0xAF] = '¯';
 
-		$from[0xD0] = "Ð";
-		$from[0xD1] = "Ñ";
-		$from[0xD2] = "Ò";
-		$from[0xD3] = "Ó";
-		$from[0xD4] = "Ô";
-		$from[0xD5] = "Õ";
-		$from[0xD6] = "Ö";
-		$from[0xD7] = "×";
-		$from[0xD8] = "Ø";
-		$from[0xD9] = "Ù";
-		$from[0xDA] = "Ú";
-		$from[0xDB] = "Û";
-		$from[0xDC] = "Ü";
-		$from[0xDD] = "Ý";
-		$from[0xDE] = "Þ";
-		$from[0xDF] = "ß";
+        $from[0xB0] = '°';
+        $from[0xB1] = '±';
+        $from[0xB2] = '²';
+        $from[0xB3] = '³';
+        $from[0xB4] = '´';
+        $from[0xB5] = 'µ';
+        $from[0xB6] = '¶';
+        $from[0xB7] = '·';
+        $from[0xB8] = '¸';
+        $from[0xB9] = '¹';
+        $from[0xBA] = 'º';
+        $from[0xBB] = '»';
+        $from[0xBC] = '¼';
+        $from[0xBD] = '½';
+        $from[0xBE] = '¾';
+        $from[0xBF] = '¿';
 
-		$from[0xE0] = "à";
-		$from[0xE1] = "á";
-		$from[0xE2] = "â";
-		$from[0xE3] = "ã";
-		$from[0xE4] = "ä";
-		$from[0xE5] = "å";
-		$from[0xE6] = "æ";
-		$from[0xE7] = "ç";
-		$from[0xE8] = "è";
-		$from[0xE9] = "é";
-		$from[0xEA] = "ê";
-		$from[0xEB] = "ë";
-		$from[0xEC] = "ì";
-		$from[0xED] = "í";
-		$from[0xEE] = "î";
-		$from[0xEF] = "ï";
+        $from[0xC0] = 'À';
+        $from[0xC1] = 'Á';
+        $from[0xC2] = 'Â';
+        $from[0xC3] = 'Ã';
+        $from[0xC4] = 'Ä';
+        $from[0xC5] = 'Å';
+        $from[0xC6] = 'Æ';
+        $from[0xC7] = 'Ç';
+        $from[0xC8] = 'È';
+        $from[0xC9] = 'É';
+        $from[0xCA] = 'Ê';
+        $from[0xCB] = 'Ë';
+        $from[0xCC] = 'Ì';
+        $from[0xCD] = 'Í';
+        $from[0xCE] = 'Î';
+        $from[0xCF] = 'Ï';
 
-		$from[0xF0] = "ð";
-		$from[0xF1] = "ñ";
-		$from[0xF2] = "ò";
-		$from[0xF3] = "ó";
-		$from[0xF4] = "ô";
-		$from[0xF5] = "õ";
-		$from[0xF6] = "ö";
-		$from[0xF7] = "÷";
-		$from[0xF8] = "ø";
-		$from[0xF9] = "ù";
-		$from[0xFA] = "ú";
-		$from[0xFB] = "û";
-		$from[0xFC] = "ü";
-		$from[0xFD] = "ý";
-		$from[0xFE] = "þ";
-		$from[0xFF] = "ÿ";
-		
+        $from[0xD0] = 'Ð';
+        $from[0xD1] = 'Ñ';
+        $from[0xD2] = 'Ò';
+        $from[0xD3] = 'Ó';
+        $from[0xD4] = 'Ô';
+        $from[0xD5] = 'Õ';
+        $from[0xD6] = 'Ö';
+        $from[0xD7] = '×';
+        $from[0xD8] = 'Ø';
+        $from[0xD9] = 'Ù';
+        $from[0xDA] = 'Ú';
+        $from[0xDB] = 'Û';
+        $from[0xDC] = 'Ü';
+        $from[0xDD] = 'Ý';
+        $from[0xDE] = 'Þ';
+        $from[0xDF] = 'ß';
 
-		return array($from, $to);
-	}
-	/*
-	00 = U+0000 : NULL
+        $from[0xE0] = 'à';
+        $from[0xE1] = 'á';
+        $from[0xE2] = 'â';
+        $from[0xE3] = 'ã';
+        $from[0xE4] = 'ä';
+        $from[0xE5] = 'å';
+        $from[0xE6] = 'æ';
+        $from[0xE7] = 'ç';
+        $from[0xE8] = 'è';
+        $from[0xE9] = 'é';
+        $from[0xEA] = 'ê';
+        $from[0xEB] = 'ë';
+        $from[0xEC] = 'ì';
+        $from[0xED] = 'í';
+        $from[0xEE] = 'î';
+        $from[0xEF] = 'ï';
+
+        $from[0xF0] = 'ð';
+        $from[0xF1] = 'ñ';
+        $from[0xF2] = 'ò';
+        $from[0xF3] = 'ó';
+        $from[0xF4] = 'ô';
+        $from[0xF5] = 'õ';
+        $from[0xF6] = 'ö';
+        $from[0xF7] = '÷';
+        $from[0xF8] = 'ø';
+        $from[0xF9] = 'ù';
+        $from[0xFA] = 'ú';
+        $from[0xFB] = 'û';
+        $from[0xFC] = 'ü';
+        $from[0xFD] = 'ý';
+        $from[0xFE] = 'þ';
+        $from[0xFF] = 'ÿ';
+
+        return array($from, $to);
+    }
+    /*
+    00 = U+0000 : NULL
 01 = U+0001 : START OF HEADING
 02 = U+0002 : START OF TEXT
 03 = U+0003 : END OF TEXT
@@ -407,7 +410,6 @@ FC = U+00FC : LATIN SMALL LETTER U WITH DIAERESIS
 FD = U+00FD : LATIN SMALL LETTER Y WITH ACUTE
 FE = U+00FE : LATIN SMALL LETTER THORN
 FF = U+00FF : LATIN SMALL LETTER Y WITH DIAERESIS
-	 * 
-	 */
+     * 
+     */
 }
-?>
