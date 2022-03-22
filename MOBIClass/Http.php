@@ -15,7 +15,7 @@ class Http
 
     public static function FullRequest(
             $verb = 'GET',             /* HTTP Request Method (GET and POST supported) */
-            $ip,                       /* Target IP/Hostname */
+            $ip = '127.0.0.1',         /* Target IP/Hostname */
             $port = 80,                /* Target TCP port */
             $uri = '/',                /* Target URI */
             $getdata = array(),        /* HTTP GET Data ie. array('var1' => 'val1', 'var2' => 'val2') */
@@ -24,8 +24,8 @@ class Http
             $custom_headers = array(), /* Custom HTTP headers ie. array('Referer: http://localhost/ */
             $timeout = 1000,           /* Socket timeout in milliseconds */
             $req_hdr = false,          /* Include HTTP request headers */
-            $res_hdr = false,           /* Include HTTP response headers */
-            $depth = 4                    /* Depth of the iteration left (to avoid redirection loops) */
+            $res_hdr = false,          /* Include HTTP response headers */
+            $depth = 4                 /* Depth of the iteration left (to avoid redirection loops) */
             ) {
         if (self::$cache) {
             $cacheFile = 'cache/'.$ip.'/'.str_replace('/', '...', $uri);
